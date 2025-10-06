@@ -1,0 +1,15 @@
+.next
+.husky
+.prettierrc
+.prettierignore
+.eslintignore
+.eslintrc.json
+.vscode
+next-env.d.ts
+node_modules
+yarn.lock
+package-lock.json
+public
+next-sitemap.config.js
+next.config.js
+tsconfig.tsbuildinfo

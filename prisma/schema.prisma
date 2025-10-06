@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  subject   String
+  message   String   @db.Text
+  status    String   @default("unread") // unread, read, responded
+  metadata  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Program {
+  id          String   @id @default(cuid())
+  name        String
+  host        String
+  day         String
+  startTime   String
+  endTime     String
+  description String?
+  imageUrl    String?
+  featured    Boolean  @default(false)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Podcast {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  content     String?  @db.Text
+  imageUrl    String
+  audioUrl    String?
+  duration    String?
+  episodeNumber Int?
+  season      Int?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishDate DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  content     String   @db.Text
+  imageUrl    String
+  category    String?
+  author      String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishDate DateTime @default(now())
+  views       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("admin")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Team {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  roleYoruba  String?  // Yoruba translation of role
+  imageUrl    String
+  description String   @db.Text
+  email       String?
+  phone       String?
+  bio         String?  @db.Text
+  socialLinks Json?    // Store social media links as JSON
+  featured    Boolean  @default(false)
+  active      Boolean  @default(true)
+  displayOrder Int     @default(0) // For ordering team members
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([displayOrder])
+  @@index([active, featured])
+}
