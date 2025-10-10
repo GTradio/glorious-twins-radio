@@ -22,7 +22,7 @@ export default function AdminLayoutClient({
 
   return (
     <SessionProvider>
-      <div className="flex h-screen">
+      <div className="flex h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
         <AdminSidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
         <div className="flex-1 flex flex-col overflow-hidden">
@@ -31,7 +31,7 @@ export default function AdminLayoutClient({
             isSidebarOpen={isSidebarOpen}
           />
 
-          <main className="flex-1 overflow-y-auto">
+          <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-950">
             <div className="container mx-auto px-4 lg:px-6 py-4 lg:py-8">
               {children}
             </div>

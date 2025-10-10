@@ -143,16 +143,16 @@ const AdminTeamPage = () => {
   const getStatusBadge = (member: Team) => (
     <div className="flex gap-1">
       {member.active ? (
-        <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+        <span className="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-xs font-medium border border-emerald-200 dark:border-emerald-500/30">
           Active
         </span>
       ) : (
-        <span className="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium">
+        <span className="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-full text-xs font-medium border border-red-200 dark:border-red-500/30">
           Inactive
         </span>
       )}
       {member.featured && (
-        <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium inline-flex items-center gap-1">
+        <span className="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-full text-xs font-medium inline-flex items-center gap-1 border border-yellow-200 dark:border-yellow-500/30">
           <Star className="w-3 h-3" />
           Featured
         </span>
@@ -165,14 +165,16 @@ const AdminTeamPage = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Team Management</h1>
-          <p className="text-gray-600 mt-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Team Management
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">
             Manage team members and their information
           </p>
         </div>
         <button
           onClick={() => setShowCreateForm(true)}
-          className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg inline-flex items-center gap-2 transition-colors"
+          className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-xl inline-flex items-center gap-2 transition-colors font-medium shadow-lg"
         >
           <Plus className="w-5 h-5" />
           Add Team Member
@@ -181,33 +183,39 @@ const AdminTeamPage = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-600/30 transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Total Members</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Total Members
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                {stats.total}
+              </p>
             </div>
-            <Users className="w-8 h-8 text-gray-400" />
+            <Users className="w-8 h-8 text-gray-400 dark:text-gray-500" />
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-600/30 transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Active</p>
-              <p className="text-2xl font-bold text-green-600">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">Active</p>
+              <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                 {stats.active}
               </p>
             </div>
-            <CheckCircle className="w-8 h-8 text-green-500" />
+            <CheckCircle className="w-8 h-8 text-emerald-500" />
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-600/30 transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Inactive</p>
-              <p className="text-2xl font-bold text-red-600">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Inactive
+              </p>
+              <p className="text-2xl font-bold text-red-600 dark:text-red-400">
                 {stats.inactive}
               </p>
             </div>
@@ -215,11 +223,13 @@ const AdminTeamPage = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-600/30 transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Featured</p>
-              <p className="text-2xl font-bold text-yellow-600">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Featured
+              </p>
+              <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
                 {stats.featured}
               </p>
             </div>
@@ -229,18 +239,18 @@ const AdminTeamPage = () => {
       </div>
 
       {/* Actions Bar */}
-      <div className="bg-white rounded-lg shadow p-4 mb-6">
+      <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-4 mb-6 border border-gray-200 dark:border-gray-600/30">
         <div className="flex flex-col md:flex-row gap-4 justify-between">
           <div className="flex gap-4 flex-1">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search team members..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
               />
             </div>
 
@@ -249,7 +259,7 @@ const AdminTeamPage = () => {
               title="Filter by status"
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
             >
               <option value="all">All Members</option>
               <option value="active">Active</option>
@@ -261,7 +271,7 @@ const AdminTeamPage = () => {
       </div>
 
       {/* Team Members Grid/Table */}
-      <div className="bg-white rounded-lg shadow overflow-hidden">
+      <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-600/30">
         {loading ? (
           <div className="p-6 space-y-4">
             {[...Array(5)].map((_, i) => (
@@ -269,35 +279,37 @@ const AdminTeamPage = () => {
             ))}
           </div>
         ) : error ? (
-          <div className="p-6 text-center text-red-600">
+          <div className="p-6 text-center text-red-600 dark:text-red-400">
             <AlertCircle className="w-12 h-12 mx-auto mb-2" />
             <p>{error}</p>
           </div>
         ) : filteredMembers.length === 0 ? (
           <div className="p-12 text-center">
-            <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500">No team members found</p>
+            <Users className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+            <p className="text-gray-500 dark:text-gray-400">
+              No team members found
+            </p>
           </div>
         ) : (
           <table className="w-full">
-            <thead className="bg-gray-50 border-b">
+            <thead className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700">
               <tr>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
                   Member
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
                   Role
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
                   Contact
                 </th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                   Status
                 </th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                   Display Order
                 </th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                   Actions
                 </th>
               </tr>
@@ -306,11 +318,11 @@ const AdminTeamPage = () => {
               {filteredMembers.map((member) => (
                 <tr
                   key={member.id}
-                  className="border-b hover:bg-gray-50 transition-colors"
+                  className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
                 >
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-gray-200 dark:ring-gray-700">
                         <Image
                           src={member.imageUrl}
                           alt={member.name}
@@ -323,10 +335,10 @@ const AdminTeamPage = () => {
                         />
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium text-gray-900 dark:text-white">
                           {member.name}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
                           {formatDate(member.createdAt)}
                         </div>
                       </div>
@@ -334,11 +346,11 @@ const AdminTeamPage = () => {
                   </td>
                   <td className="px-6 py-4">
                     <div>
-                      <div className="font-medium text-gray-900">
+                      <div className="font-medium text-gray-900 dark:text-white">
                         {member.role}
                       </div>
                       {member.roleYoruba && (
-                        <div className="text-sm text-gray-500 italic">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 italic">
                           {member.roleYoruba}
                         </div>
                       )}
@@ -347,10 +359,14 @@ const AdminTeamPage = () => {
                   <td className="px-6 py-4">
                     <div className="text-sm">
                       {member.email && (
-                        <div className="text-gray-900">{member.email}</div>
+                        <div className="text-gray-900 dark:text-white">
+                          {member.email}
+                        </div>
                       )}
                       {member.phone && (
-                        <div className="text-gray-500">{member.phone}</div>
+                        <div className="text-gray-500 dark:text-gray-400">
+                          {member.phone}
+                        </div>
                       )}
                     </div>
                   </td>
@@ -358,7 +374,7 @@ const AdminTeamPage = () => {
                     {getStatusBadge(member)}
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <span className="text-sm font-medium">
+                    <span className="text-sm font-medium text-gray-900 dark:text-white">
                       {member.displayOrder}
                     </span>
                   </td>
@@ -367,14 +383,14 @@ const AdminTeamPage = () => {
                       <button
                         title="View Details"
                         onClick={() => setSelectedMember(member)}
-                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        className="p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-colors"
                       >
                         <Eye className="w-4 h-4" />
                       </button>
                       <button
                         title="Edit Member"
                         onClick={() => setShowEditForm(member)}
-                        className="p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+                        className="p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
                       >
                         <Edit className="w-4 h-4" />
                       </button>
@@ -387,8 +403,8 @@ const AdminTeamPage = () => {
                         onClick={() => handleToggleFeatured(member)}
                         className={`p-2 rounded-lg transition-colors ${
                           member.featured
-                            ? "text-yellow-600 hover:bg-yellow-50"
-                            : "text-gray-400 hover:bg-gray-50"
+                            ? "text-yellow-600 dark:text-yellow-400 hover:bg-yellow-50 dark:hover:bg-yellow-900/30"
+                            : "text-gray-400 dark:text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800"
                         }`}
                       >
                         {member.featured ? (
@@ -400,7 +416,7 @@ const AdminTeamPage = () => {
                       <button
                         title="Delete Member"
                         onClick={() => setDeleteConfirm(member.id)}
-                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -440,23 +456,25 @@ const AdminTeamPage = () => {
 
       {/* Delete Confirmation */}
       {deleteConfirm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-lg font-bold mb-4">Confirm Delete</h3>
-            <p className="text-gray-600 mb-6">
+        <div className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 max-w-md w-full border border-gray-200 dark:border-gray-600/30 shadow-2xl">
+            <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-white">
+              Confirm Delete
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               Are you sure you want to delete this team member? This action
               cannot be undone.
             </p>
             <div className="flex justify-end gap-4">
               <button
                 onClick={() => setDeleteConfirm(null)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={() => handleDelete(deleteConfirm)}
-                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl transition-colors"
               >
                 Delete
               </button>
@@ -476,14 +494,16 @@ const MemberDetailsModal = ({
   member: Team;
   onClose: () => void;
 }) => (
-  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-    <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-      <div className="p-6 border-b flex items-center justify-between">
-        <h2 className="text-xl font-bold">Team Member Details</h2>
+  <div className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-600/30 shadow-2xl">
+      <div className="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+          Team Member Details
+        </h2>
         <button
           title="Close"
           onClick={onClose}
-          className="text-gray-500 hover:text-gray-700"
+          className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
         >
           <X className="w-6 h-6" />
         </button>
@@ -492,7 +512,7 @@ const MemberDetailsModal = ({
       <div className="p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Image */}
-          <div className="relative h-64 rounded-lg overflow-hidden">
+          <div className="relative h-64 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
             <Image
               src={member.imageUrl}
               alt={member.name}
@@ -504,31 +524,33 @@ const MemberDetailsModal = ({
           {/* Member Info */}
           <div className="space-y-4">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {member.name}
               </h3>
               <div className="mt-1">
-                <p className="text-lg text-orange-600 font-semibold">
+                <p className="text-lg text-emerald-600 dark:text-emerald-400 font-semibold">
                   {member.role}
                 </p>
                 {member.roleYoruba && (
-                  <p className="text-orange-500 italic">{member.roleYoruba}</p>
+                  <p className="text-emerald-500 dark:text-emerald-400 italic">
+                    {member.roleYoruba}
+                  </p>
                 )}
               </div>
             </div>
 
             <div className="flex gap-2">
               {member.active ? (
-                <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-sm font-medium border border-emerald-200 dark:border-emerald-500/30">
                   Active
                 </span>
               ) : (
-                <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-full text-sm font-medium border border-red-200 dark:border-red-500/30">
                   Inactive
                 </span>
               )}
               {member.featured && (
-                <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium inline-flex items-center gap-1">
+                <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-full text-sm font-medium inline-flex items-center gap-1 border border-yellow-200 dark:border-yellow-500/30">
                   <Star className="w-4 h-4" />
                   Featured
                 </span>
@@ -538,15 +560,17 @@ const MemberDetailsModal = ({
             {/* Contact Info */}
             {(member.email || member.phone) && (
               <div className="space-y-2">
-                <h4 className="font-semibold text-gray-900">
+                <h4 className="font-semibold text-gray-900 dark:text-white">
                   Contact Information
                 </h4>
                 {member.email && (
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-500">Email:</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      Email:
+                    </span>
                     <a
                       href={`mailto:${member.email}`}
-                      className="text-sm text-blue-600 hover:underline"
+                      className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                     >
                       {member.email}
                     </a>
@@ -554,10 +578,12 @@ const MemberDetailsModal = ({
                 )}
                 {member.phone && (
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-500">Phone:</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      Phone:
+                    </span>
                     <a
                       href={`tel:${member.phone}`}
-                      className="text-sm text-blue-600 hover:underline"
+                      className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                     >
                       {member.phone}
                     </a>
@@ -568,21 +594,29 @@ const MemberDetailsModal = ({
 
             {/* Display Order */}
             <div>
-              <span className="text-sm text-gray-500">Display Order:</span>
-              <span className="ml-2 font-medium">{member.displayOrder}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                Display Order:
+              </span>
+              <span className="ml-2 font-medium text-gray-900 dark:text-white">
+                {member.displayOrder}
+              </span>
             </div>
 
             {/* Dates */}
             <div className="space-y-1">
               <div>
-                <span className="text-sm text-gray-500">Created:</span>
-                <span className="ml-2 text-sm">
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  Created:
+                </span>
+                <span className="ml-2 text-sm text-gray-900 dark:text-white">
                   {formatDate(member.createdAt)}
                 </span>
               </div>
               <div>
-                <span className="text-sm text-gray-500">Updated:</span>
-                <span className="ml-2 text-sm">
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  Updated:
+                </span>
+                <span className="ml-2 text-sm text-gray-900 dark:text-white">
                   {formatDate(member.updatedAt)}
                 </span>
               </div>
@@ -592,16 +626,22 @@ const MemberDetailsModal = ({
 
         {/* Description */}
         <div className="mt-6">
-          <h4 className="font-semibold text-gray-900 mb-2">Description</h4>
-          <p className="text-gray-700 leading-relaxed">{member.description}</p>
+          <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+            Description
+          </h4>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {member.description}
+          </p>
         </div>
 
         {/* Bio */}
         {member.bio && (
           <div className="mt-6">
-            <h4 className="font-semibold text-gray-900 mb-2">Biography</h4>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+              Biography
+            </h4>
+            <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
                 {member.bio}
               </p>
             </div>
@@ -611,16 +651,20 @@ const MemberDetailsModal = ({
         {/* Social Links */}
         {member.socialLinks && Object.keys(member.socialLinks).length > 0 && (
           <div className="mt-6">
-            <h4 className="font-semibold text-gray-900 mb-2">Social Media</h4>
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+              Social Media
+            </h4>
             <div className="space-y-2">
               {member.socialLinks.twitter && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-500">Twitter:</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    Twitter:
+                  </span>
                   <a
                     href={member.socialLinks.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     {member.socialLinks.twitter}
                   </a>
@@ -628,12 +672,14 @@ const MemberDetailsModal = ({
               )}
               {member.socialLinks.linkedin && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-500">LinkedIn:</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    LinkedIn:
+                  </span>
                   <a
                     href={member.socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     {member.socialLinks.linkedin}
                   </a>
@@ -641,12 +687,14 @@ const MemberDetailsModal = ({
               )}
               {member.socialLinks.instagram && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-500">Instagram:</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    Instagram:
+                  </span>
                   <a
                     href={member.socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     {member.socialLinks.instagram}
                   </a>
@@ -654,12 +702,14 @@ const MemberDetailsModal = ({
               )}
               {member.socialLinks.facebook && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-500">Facebook:</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    Facebook:
+                  </span>
                   <a
                     href={member.socialLinks.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     {member.socialLinks.facebook}
                   </a>
@@ -669,10 +719,10 @@ const MemberDetailsModal = ({
           </div>
         )}
 
-        <div className="flex justify-end mt-6 pt-4 border-t">
+        <div className="flex justify-end mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
           <button
             onClick={onClose}
-            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+            className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             Close
           </button>
@@ -768,16 +818,16 @@ const CreateEditMemberModal = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b flex items-center justify-between">
-          <h2 className="text-xl font-bold">
+    <div className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-600/30 shadow-2xl">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
             {member ? "Edit Team Member" : "Add New Team Member"}
           </h2>
           <button
             onClick={onClose}
             title="Close"
-            className="text-gray-500 hover:text-gray-700"
+            className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
           >
             <X className="w-6 h-6" />
           </button>
@@ -787,87 +837,95 @@ const CreateEditMemberModal = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Name *
               </label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={(e) => handleChange("name", e.target.value)}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 ${
-                  errors.name ? "border-red-500" : "border-gray-300"
+                className={`w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors ${
+                  errors.name
+                    ? "border-red-500"
+                    : "border-gray-300 dark:border-gray-600"
                 }`}
                 placeholder="Enter full name"
               />
               {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1">
+                  {errors.name}
+                </p>
               )}
             </div>
 
             {/* Role */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Role *
               </label>
               <input
                 type="text"
                 value={formData.role}
                 onChange={(e) => handleChange("role", e.target.value)}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 ${
-                  errors.role ? "border-red-500" : "border-gray-300"
+                className={`w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors ${
+                  errors.role
+                    ? "border-red-500"
+                    : "border-gray-300 dark:border-gray-600"
                 }`}
                 placeholder="e.g. Station Manager"
               />
               {errors.role && (
-                <p className="text-red-500 text-sm mt-1">{errors.role}</p>
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1">
+                  {errors.role}
+                </p>
               )}
             </div>
 
             {/* Role Yoruba */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Role (Yoruba)
               </label>
               <input
                 type="text"
                 value={formData.roleYoruba}
                 onChange={(e) => handleChange("roleYoruba", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
                 placeholder="e.g. Ọlùdarí"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Email
               </label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => handleChange("email", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
                 placeholder="email@example.com"
               />
             </div>
 
             {/* Phone */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Phone
               </label>
               <input
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleChange("phone", e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
                 placeholder="+234-xxx-xxx-xxxx"
               />
             </div>
 
             {/* Display Order */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Display Order
               </label>
               <input
@@ -876,7 +934,7 @@ const CreateEditMemberModal = ({
                 onChange={(e) =>
                   handleChange("displayOrder", parseInt(e.target.value) || 0)
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
                 placeholder="0"
                 min="0"
               />
@@ -896,46 +954,50 @@ const CreateEditMemberModal = ({
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Description *
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => handleChange("description", e.target.value)}
               rows={3}
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 ${
-                errors.description ? "border-red-500" : "border-gray-300"
+              className={`w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors ${
+                errors.description
+                  ? "border-red-500"
+                  : "border-gray-300 dark:border-gray-600"
               }`}
               placeholder="Brief description for the card..."
             />
             {errors.description && (
-              <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm mt-1">
+                {errors.description}
+              </p>
             )}
           </div>
 
           {/* Bio */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Biography
             </label>
             <textarea
               value={formData.bio}
               onChange={(e) => handleChange("bio", e.target.value)}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
               placeholder="Detailed biography..."
             />
           </div>
 
           {/* Social Links */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
               Social Media Links
             </label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {Object.entries(formData.socialLinks).map(([platform, url]) => (
                 <div key={platform}>
-                  <label className="block text-sm text-gray-600 mb-1 capitalize">
+                  <label className="block text-sm text-gray-600 dark:text-gray-400 mb-1 capitalize">
                     {platform}
                   </label>
                   <input
@@ -944,7 +1006,7 @@ const CreateEditMemberModal = ({
                     onChange={(e) =>
                       handleSocialChange(platform, e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
                     placeholder={`https://${platform}.com/username`}
                   />
                 </div>
@@ -959,35 +1021,37 @@ const CreateEditMemberModal = ({
                 type="checkbox"
                 checked={formData.active}
                 onChange={(e) => handleChange("active", e.target.checked)}
-                className="mr-2"
+                className="mr-2 rounded text-emerald-600 focus:ring-emerald-500"
               />
-              <span className="text-sm font-medium text-gray-700">Active</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                Active
+              </span>
             </label>
             <label className="flex items-center">
               <input
                 type="checkbox"
                 checked={formData.featured}
                 onChange={(e) => handleChange("featured", e.target.checked)}
-                className="mr-2"
+                className="mr-2 rounded text-emerald-600 focus:ring-emerald-500"
               />
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Featured
               </span>
             </label>
           </div>
 
           {/* Form Actions */}
-          <div className="flex justify-end gap-4 pt-6 border-t">
+          <div className="flex justify-end gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-6 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-colors"
+              className="px-6 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl transition-colors shadow-lg"
             >
               {member ? "Update Member" : "Create Member"}
             </button>

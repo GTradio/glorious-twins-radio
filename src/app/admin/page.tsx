@@ -203,8 +203,12 @@ const AdminDashboard = () => {
   if (loading) {
     return (
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Dashboard</h1>
-        <p className="text-gray-600 mb-6">Loading dashboard data...</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Dashboard
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">
+          Loading dashboard data...
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[...Array(6)].map((_, i) => (
             <Skeleton key={i} className="h-32" />
@@ -217,12 +221,30 @@ const AdminDashboard = () => {
   if (error) {
     return (
       <div className="text-center py-12">
-        <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-3" />
-        <p className="text-red-600 mb-2">Failed to load dashboard data</p>
+        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+          <AlertCircle className="w-8 h-8 text-red-500 dark:text-red-400" />
+        </div>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+          Failed to load dashboard data
+        </h3>
+        <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
         <button
           onClick={fetchDashboardData}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
+          className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl font-medium transition-colors duration-200 flex items-center justify-center gap-2 mx-auto"
         >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+            />
+          </svg>
           Retry
         </button>
       </div>
@@ -231,8 +253,12 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-      <p className="text-gray-600 mb-8">Welcome back, Admin</p>
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        Dashboard
+      </h1>
+      <p className="text-gray-600 dark:text-gray-400 mb-8">
+        Welcome back, Admin
+      </p>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -258,7 +284,7 @@ const AdminDashboard = () => {
           title="Unread Messages"
           value={stats.contacts.unread}
           sub={`${stats.contacts.todayCount} new today`}
-          icon={<Mail className="text-green-500" />}
+          icon={<Mail className="text-emerald-500" />}
         />
       </div>
 
@@ -293,13 +319,19 @@ const StatCard = ({
   sub?: string;
   icon: React.ReactNode;
 }) => (
-  <div className="bg-white border rounded-lg p-5 flex justify-between items-center shadow-sm">
+  <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl border border-gray-200 dark:border-gray-600/30 rounded-2xl p-5 flex justify-between items-center shadow-2xl transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
     <div>
-      <p className="text-gray-500 text-sm">{title}</p>
-      <p className="text-3xl font-bold text-gray-900">{value}</p>
-      {sub && <p className="text-sm text-gray-500 mt-1">{sub}</p>}
+      <p className="text-gray-500 dark:text-gray-400 text-sm">{title}</p>
+      <p className="text-3xl font-bold text-gray-900 dark:text-white">
+        {value}
+      </p>
+      {sub && (
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{sub}</p>
+      )}
     </div>
-    <div className="p-3 bg-gray-50 rounded-full">{icon}</div>
+    <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-full">
+      {icon}
+    </div>
   </div>
 );
 
@@ -310,41 +342,55 @@ const LiveStatus = ({
   currentProgram: Program | null;
   upcomingPrograms: Program[];
 }) => (
-  <div className="bg-white rounded-lg border shadow-sm p-6">
-    <h2 className="text-xl font-bold text-gray-900 mb-4">Live Status</h2>
+  <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-gray-600/30 shadow-2xl p-6 transition-all duration-300">
+    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+      Live Status
+    </h2>
     {currentProgram ? (
-      <div className="p-4 bg-green-50 rounded-lg mb-4">
-        <p className="text-sm font-semibold text-green-600 mb-1">ON AIR</p>
-        <h3 className="text-lg font-bold text-gray-900">
+      <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-500/30 rounded-xl mb-4">
+        <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-1">
+          ON AIR
+        </p>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
           {currentProgram.name}
         </h3>
-        <p className="text-gray-600">with {currentProgram.host}</p>
+        <p className="text-gray-600 dark:text-gray-400">
+          with {currentProgram.host}
+        </p>
       </div>
     ) : (
-      <p className="text-gray-500 mb-4">No live program currently</p>
+      <p className="text-gray-500 dark:text-gray-400 mb-4">
+        No live program currently
+      </p>
     )}
 
-    <h3 className="font-semibold text-gray-900 mb-2">Upcoming Programs</h3>
+    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+      Upcoming Programs
+    </h3>
     <div className="space-y-2">
       {upcomingPrograms.length > 0 ? (
         upcomingPrograms.map((p) => (
           <div
             key={p.id}
-            className="p-3 bg-gray-50 rounded-md flex justify-between"
+            className="p-3 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl flex justify-between transition-colors hover:bg-gray-100 dark:hover:bg-gray-700/50"
           >
             <div>
-              <p className="font-medium">{p.name}</p>
-              <p className="text-sm text-gray-500">
+              <p className="font-medium text-gray-900 dark:text-white">
+                {p.name}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 {p.startTime} - {p.endTime}
               </p>
             </div>
-            <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
+            <span className="text-xs text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded h-fit">
               {p.host}
             </span>
           </div>
         ))
       ) : (
-        <p className="text-sm text-gray-500">No upcoming programs today</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          No upcoming programs today
+        </p>
       )}
     </div>
   </div>
@@ -355,8 +401,10 @@ const RecentActivityList = ({
 }: {
   recentActivity: RecentActivity[];
 }) => (
-  <div className="bg-white rounded-lg border shadow-sm p-6">
-    <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Activity</h2>
+  <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-gray-600/30 shadow-2xl p-6 transition-all duration-300">
+    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+      Recent Activity
+    </h2>
     <div className="space-y-3">
       {recentActivity.length > 0 ? (
         recentActivity.map((a, i) => (
@@ -364,30 +412,36 @@ const RecentActivityList = ({
             <div
               className={`p-2 rounded-full ${
                 a.type === "contact"
-                  ? "bg-blue-100"
+                  ? "bg-blue-100 dark:bg-blue-900/30"
                   : a.type === "news"
-                  ? "bg-orange-100"
-                  : "bg-purple-100"
+                  ? "bg-orange-100 dark:bg-orange-900/30"
+                  : "bg-purple-100 dark:bg-purple-900/30"
               }`}
             >
               {a.type === "contact" && (
-                <MessageSquare className="w-4 h-4 text-blue-600" />
+                <MessageSquare className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               )}
               {a.type === "news" && (
-                <Newspaper className="w-4 h-4 text-orange-600" />
+                <Newspaper className="w-4 h-4 text-orange-600 dark:text-orange-400" />
               )}
               {a.type === "podcast" && (
-                <Headphones className="w-4 h-4 text-purple-600" />
+                <Headphones className="w-4 h-4 text-purple-600 dark:text-purple-400" />
               )}
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-900">{a.title}</p>
-              <p className="text-xs text-gray-500">{a.time}</p>
+              <p className="text-sm font-medium text-gray-900 dark:text-white">
+                {a.title}
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {a.time}
+              </p>
             </div>
           </div>
         ))
       ) : (
-        <p className="text-sm text-gray-500 text-center">No recent activity</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+          No recent activity
+        </p>
       )}
     </div>
   </div>
@@ -398,19 +452,30 @@ const UnreadMessagesList = ({
 }: {
   unreadMessages: ContactMessage[];
 }) => (
-  <div className="bg-white rounded-lg border shadow-sm p-6">
-    <h2 className="text-xl font-bold text-gray-900 mb-4">Unread Messages</h2>
+  <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-gray-600/30 shadow-2xl p-6 transition-all duration-300">
+    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+      Unread Messages
+    </h2>
     {unreadMessages.length > 0 ? (
       <div className="space-y-3">
         {unreadMessages.map((m) => (
-          <div key={m.id} className="p-3 bg-blue-50 rounded-md">
-            <p className="font-medium text-gray-900">{m.name}</p>
-            <p className="text-sm text-gray-600">{m.subject}</p>
+          <div
+            key={m.id}
+            className="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-500/30 rounded-xl transition-colors hover:bg-blue-100 dark:hover:bg-blue-900/30"
+          >
+            <p className="font-medium text-gray-900 dark:text-white">
+              {m.name}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              {m.subject}
+            </p>
           </div>
         ))}
       </div>
     ) : (
-      <p className="text-sm text-gray-500 text-center">No unread messages</p>
+      <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+        No unread messages
+      </p>
     )}
   </div>
 );

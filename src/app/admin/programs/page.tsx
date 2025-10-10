@@ -166,54 +166,62 @@ const AdminProgramsPage = () => {
     <div>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           Programs Management
         </h1>
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-600 dark:text-gray-400 mt-2">
           Manage your radio programs and schedules
         </p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-600/30 transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Total Programs</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Total Programs
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {programs.length}
               </p>
             </div>
-            <Calendar className="w-8 h-8 text-green-500" />
+            <Calendar className="w-8 h-8 text-emerald-500" />
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-600/30 transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Active Programs</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Active Programs
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {programs.filter((p) => p.active).length}
               </p>
             </div>
             <Clock className="w-8 h-8 text-blue-500" />
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-600/30 transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Featured</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Featured
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {programs.filter((p) => p.featured).length}
               </p>
             </div>
             <AlertCircle className="w-8 h-8 text-orange-500" />
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-600/30 transition-all duration-300 hover:shadow-emerald-500/20 hover:border-emerald-500/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Today&apos;s Shows</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Today&apos;s Shows
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {
                   programs.filter(
                     (p) => p.day === days[new Date().getDay() - 1]
@@ -227,18 +235,18 @@ const AdminProgramsPage = () => {
       </div>
 
       {/* Actions Bar */}
-      <div className="bg-white rounded-lg shadow p-4 mb-6">
+      <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl p-4 mb-6 border border-gray-200 dark:border-gray-600/30">
         <div className="flex flex-col md:flex-row gap-4 justify-between">
           <div className="flex gap-4 flex-1">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search programs..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
               />
             </div>
 
@@ -247,7 +255,7 @@ const AdminProgramsPage = () => {
               title="Filter by day"
               value={selectedDay}
               onChange={(e) => setSelectedDay(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
             >
               <option value="all">All Days</option>
               {days.map((day) => (
@@ -262,7 +270,7 @@ const AdminProgramsPage = () => {
           <button
             type="button"
             onClick={() => handleOpenModal()}
-            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg inline-flex items-center gap-2 transition-colors"
+            className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-xl inline-flex items-center gap-2 transition-colors font-medium shadow-lg"
           >
             <Plus className="w-5 h-5" />
             Add Program
@@ -271,7 +279,7 @@ const AdminProgramsPage = () => {
       </div>
 
       {/* Programs Table */}
-      <div className="bg-white rounded-lg shadow overflow-hidden">
+      <div className="bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-600/30">
         {loading ? (
           <div className="p-6 space-y-4">
             {[...Array(5)].map((_, i) => (
@@ -279,32 +287,34 @@ const AdminProgramsPage = () => {
             ))}
           </div>
         ) : error ? (
-          <div className="p-6 text-center text-red-600">
+          <div className="p-6 text-center text-red-600 dark:text-red-400">
             <AlertCircle className="w-12 h-12 mx-auto mb-2" />
             <p>{error}</p>
           </div>
         ) : filteredPrograms.length === 0 ? (
           <div className="p-12 text-center">
-            <Calendar className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500">No programs found</p>
+            <Calendar className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+            <p className="text-gray-500 dark:text-gray-400">
+              No programs found
+            </p>
           </div>
         ) : (
           <table className="w-full">
-            <thead className="bg-gray-50 border-b">
+            <thead className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700">
               <tr>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
                   Program
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
                   Host
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
                   Schedule
                 </th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                   Status
                 </th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                   Actions
                 </th>
               </tr>
@@ -313,27 +323,29 @@ const AdminProgramsPage = () => {
               {filteredPrograms.map((program) => (
                 <tr
                   key={program.id}
-                  className="border-b hover:bg-gray-50 transition-colors"
+                  className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
                 >
                   <td className="px-6 py-4">
                     <div>
-                      <div className="font-medium text-gray-900">
+                      <div className="font-medium text-gray-900 dark:text-white">
                         {program.name}
                       </div>
                       {program.description && (
-                        <div className="text-sm text-gray-500 mt-1">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                           {program.description}
                         </div>
                       )}
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-gray-600">{program.host}</td>
+                  <td className="px-6 py-4 text-gray-600 dark:text-gray-300">
+                    {program.host}
+                  </td>
                   <td className="px-6 py-4">
                     <div className="text-sm">
-                      <div className="font-medium text-gray-900">
+                      <div className="font-medium text-gray-900 dark:text-white">
                         {program.day}
                       </div>
-                      <div className="text-gray-500">
+                      <div className="text-gray-500 dark:text-gray-400">
                         {program.startTime} - {program.endTime}
                       </div>
                     </div>
@@ -341,16 +353,16 @@ const AdminProgramsPage = () => {
                   <td className="px-6 py-4 text-center">
                     <div className="flex items-center justify-center gap-2">
                       {program.active ? (
-                        <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+                        <span className="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-xs font-medium border border-emerald-200 dark:border-emerald-500/30">
                           Active
                         </span>
                       ) : (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-500 rounded-full text-xs font-medium">
+                        <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-600">
                           Inactive
                         </span>
                       )}
                       {program.featured && (
-                        <span className="px-2 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
+                        <span className="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded-full text-xs font-medium border border-orange-200 dark:border-orange-500/30">
                           Featured
                         </span>
                       )}
@@ -362,7 +374,7 @@ const AdminProgramsPage = () => {
                         type="button"
                         title="Edit Program"
                         onClick={() => handleOpenModal(program)}
-                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        className="p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-colors"
                       >
                         <Edit className="w-4 h-4" />
                       </button>
@@ -370,7 +382,7 @@ const AdminProgramsPage = () => {
                         type="button"
                         title="Delete Program"
                         onClick={() => setDeleteConfirm(program.id)}
-                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -385,18 +397,18 @@ const AdminProgramsPage = () => {
 
       {/* Add/Edit Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b">
+        <div className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-600/30 shadow-2xl">
+            <div className="p-6 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-bold">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                   {editingProgram ? "Edit Program" : "Add New Program"}
                 </h2>
                 <button
                   type="button"
                   title="Close"
                   onClick={handleCloseModal}
-                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors text-gray-600 dark:text-gray-400"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -406,7 +418,7 @@ const AdminProgramsPage = () => {
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Program Name *
                   </label>
                   <input
@@ -417,12 +429,12 @@ const AdminProgramsPage = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Host *
                   </label>
                   <input
@@ -433,12 +445,12 @@ const AdminProgramsPage = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, host: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Day *
                   </label>
                   <select
@@ -448,7 +460,7 @@ const AdminProgramsPage = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, day: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
                   >
                     {days.map((day) => (
                       <option key={day} value={day}>
@@ -459,7 +471,7 @@ const AdminProgramsPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Start Time *
                   </label>
                   <input
@@ -470,12 +482,12 @@ const AdminProgramsPage = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, startTime: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     End Time *
                   </label>
                   <input
@@ -486,7 +498,7 @@ const AdminProgramsPage = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, endTime: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
                   />
                 </div>
 
@@ -504,7 +516,7 @@ const AdminProgramsPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Description
                 </label>
                 <textarea
@@ -514,7 +526,7 @@ const AdminProgramsPage = () => {
                     setFormData({ ...formData, description: e.target.value })
                   }
                   rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
                 />
               </div>
 
@@ -526,9 +538,9 @@ const AdminProgramsPage = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, featured: e.target.checked })
                     }
-                    className="rounded text-green-600 focus:ring-green-500"
+                    className="rounded text-emerald-600 focus:ring-emerald-500"
                   />
-                  <span className="text-sm font-medium text-gray-700">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Featured
                   </span>
                 </label>
@@ -540,16 +552,16 @@ const AdminProgramsPage = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, active: e.target.checked })
                     }
-                    className="rounded text-green-600 focus:ring-green-500"
+                    className="rounded text-emerald-600 focus:ring-emerald-500"
                   />
-                  <span className="text-sm font-medium text-gray-700">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Active
                   </span>
                 </label>
               </div>
 
               {error && (
-                <div className="p-4 bg-red-50 text-red-600 rounded-lg">
+                <div className="p-4 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-xl border border-red-200 dark:border-red-500/30">
                   {error}
                 </div>
               )}
@@ -558,14 +570,14 @@ const AdminProgramsPage = () => {
                 <button
                   type="button"
                   onClick={handleCloseModal}
-                  className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors inline-flex items-center gap-2 disabled:opacity-50"
+                  className="px-6 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl transition-colors inline-flex items-center gap-2 disabled:opacity-50 shadow-lg"
                 >
                   <Save className="w-4 h-4" />
                   {saving ? "Saving..." : editingProgram ? "Update" : "Create"}
@@ -578,23 +590,25 @@ const AdminProgramsPage = () => {
 
       {/* Delete Confirmation */}
       {deleteConfirm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-lg font-bold mb-4">Confirm Delete</h3>
-            <p className="text-gray-600 mb-6">
+        <div className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 max-w-md w-full border border-gray-200 dark:border-gray-600/30 shadow-2xl">
+            <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-white">
+              Confirm Delete
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               Are you sure you want to delete this program? This action cannot
               be undone.
             </p>
             <div className="flex justify-end gap-4">
               <button
                 onClick={() => setDeleteConfirm(null)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={() => handleDelete(deleteConfirm)}
-                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl transition-colors"
               >
                 Delete
               </button>

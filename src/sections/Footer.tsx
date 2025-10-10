@@ -1,9 +1,20 @@
+import {
+  Clock,
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Music2,
+  Phone,
+  Radio,
+  Youtube,
+} from "lucide-react";
 import { useMemo } from "react";
 
 interface SocialLink {
   name: string;
   href: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 interface FooterProps {
@@ -14,12 +25,28 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ onToggleContact }) => {
   const year = useMemo(() => new Date().getFullYear(), []);
 
-  // Default social links if none provided
+  // Social links with real icons
   const defaultSocialLinks: SocialLink[] = [
-    { name: "Facebook", href: "#", icon: "📘" },
-    { name: "Twitter", href: "#", icon: "🐦" },
-    { name: "Instagram", href: "#", icon: "📷" },
-    { name: "YouTube", href: "#", icon: "📺" },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=61578447703514",
+      icon: <Facebook className="w-5 h-5" />,
+    },
+    {
+      name: "TikTok",
+      href: "https://www.tiktok.com/@glorious.twins.ra8?_t=ZS-90PbxKCX7tg&_r=1",
+      icon: <Music2 className="w-5 h-5" />,
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/glorioustwinsradio?igsh=MXRxdG11NmcydDZ0",
+      icon: <Instagram className="w-5 h-5" />,
+    },
+    {
+      name: "YouTube",
+      href: "https://youtube.com/@glorioustwinsradio?si=PEpINnKwJ6esy8Vs",
+      icon: <Youtube className="w-5 h-5" />,
+    },
   ];
 
   const displaySocialLinks = defaultSocialLinks;
@@ -50,7 +77,7 @@ const Footer: React.FC<FooterProps> = ({ onToggleContact }) => {
   };
 
   return (
-    <footer className="">
+    <footer className="bg-gray-900">
       {/* Quote Section */}
       <div className="py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -95,10 +122,12 @@ const Footer: React.FC<FooterProps> = ({ onToggleContact }) => {
                   <a
                     key={social.name}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 bg-gray-800/60 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-emerald-500/80 border border-gray-700/50 hover:border-emerald-500/50 transition-all duration-300 cursor-pointer group"
                     aria-label={social.name}
                   >
-                    <span className="text-lg group-hover:scale-110 transition-transform duration-200">
+                    <span className="text-gray-300 group-hover:text-white group-hover:scale-110 transition-all duration-200">
                       {social.icon}
                     </span>
                   </a>
@@ -108,12 +137,12 @@ const Footer: React.FC<FooterProps> = ({ onToggleContact }) => {
               {/* Contact Info */}
               <div className="mt-6 space-y-3 text-sm text-gray-400">
                 <div className="flex items-center gap-2">
-                  <span className="text-emerald-400">📞</span>
-                  <span>+234 803 460 1101</span>
+                  <Phone className="w-4 h-4 text-emerald-400" />
+                  <span>+2348159529291</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-emerald-400">✉️</span>
-                  <span>glorioustwinsmediahub@gmail.com</span>
+                  <Mail className="w-4 h-4 text-emerald-400" />
+                  <span>glorioustwinsradio@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -147,7 +176,7 @@ const Footer: React.FC<FooterProps> = ({ onToggleContact }) => {
               </h3>
               <div className="space-y-4 text-gray-300 text-sm">
                 <div className="flex items-start gap-3">
-                  <span className="text-emerald-400 mt-0.5">📍</span>
+                  <MapPin className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                   <p>
                     Block B, Shop 19, Bashorun Islamic Ultra-Modern Complex,
                     <br />
@@ -156,12 +185,12 @@ const Footer: React.FC<FooterProps> = ({ onToggleContact }) => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-emerald-400">⏰</span>
+                  <Clock className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                   <p>Station operations: 5AM - 12AM daily</p>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-emerald-400">📻</span>
+                  <Radio className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                   <p>Frequency: 000.0FM • Ibadan</p>
                 </div>
               </div>
