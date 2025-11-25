@@ -34,7 +34,7 @@ const Footer: React.FC<FooterProps> = ({ onToggleContact }) => {
     },
     {
       name: "TikTok",
-      href: "https://www.tiktok.com/@glorious.twins.ra8?_t=ZS-90PbxKCX7tg&_r=1",
+      href: "https://www.tiktok.com/@glorious.twins.ra0?_r=1&_t=ZT-91g6p7IqHIt",
       icon: <Music2 className="w-5 h-5" />,
     },
     {
